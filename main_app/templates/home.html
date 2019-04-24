@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Sahur Wakeup Call 2019
+{% endblock %}
+
+{% block body %}
+
+<h1 class="title is-1 has-text-centered">Sahur Wakeup Call!</h1>
+
+<div class="container">
+
+  <div class="card">
+
+    <div class="content">
+
+      <form id="subscribeForm" method="POST" action="{{ url_for('sign_up') }}">
+
+        <div class="field">
+          <label for="name" class="label">Name</label>
+          <div class="control">
+            <input name="name" id="name" class="input" required>
+          </div>
+        </div>
+        
+        <div class="field">
+          <label for="email" class="label">Email</label>
+          <div class="control">
+            <input type="email" name="email" id="email" class="input" required>
+          </div>
+        </div>
+
+        
+        <div class="field">
+          <label for="phone" class="label">Phone number</label>
+          <div class="control">
+            <input type="tel" name="phone" id="phone" class="input" required>
+          </div>
+        </div>
+
+        
+        <div class="field center">
+          <input type="submit" value="Wake me up for sahur!" class="button is-link">
+        </div>
+        
+        
+      </form>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div class="modal">
+
+  <div class="modal-background"></div>
+  <div class="modal-content">
+
+    <div class="box">
+
+      <h2 class="title is-2">Confirm your subscription</h2>
+
+      <p>A one-time password (OTP) has been sent to <span id="otpPhoneNumber"></span>.</p>
+      <p>Please enter the OTP sent to your phone number.</p>
+      <form id="otpform" action="{{ url_for('check_otp') }}">
+        <input id="otpInput" type="password" required>
+        <input type="submit" value="Submit">
+      </form>
+
+    </div>
+
+  </div>
+  <button class="modal-close is-large" aria-label="close"></button>
+
+</div>
+
+{% endblock %}
